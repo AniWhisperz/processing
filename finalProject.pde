@@ -46,15 +46,7 @@ int mb;
 int cr;
 int cg;
 int cb;
-int lr1;
-int lg1;
-int lb1;
-int lr2;
-int lg2;
-int lb2;
-int lr3;
-int lg3;
-int lb3;
+
 //car
 int leftCar = 40;
 int rightCar = leftCar+180;
@@ -63,21 +55,20 @@ int topCar = curb+15;
 void draw(){
  noStroke();
  fill(150);
- 
- rect(left,curb,960,10);
+  rect(left,curb,960,10);
  fill(100);
  stroke(0);
  line(left, horizon, right, horizon);
  line(left, curb,right,curb);
  line(left, curb+10,right,curb+10);
 
-  //fence
-   beginShape();
-   vertex(20,horizon-5); 
-   vertex(20,215);
-   vertex(980,215);
-   vertex(980,horizon-5);
-   endShape();
+  ////fence
+  // beginShape();
+  // vertex(20,horizon-5); 
+  // vertex(20,215);
+  // vertex(980,215);
+  // vertex(980,horizon-5);
+  // endShape();
  
  fill(255);
  //house 1
@@ -159,49 +150,45 @@ void draw(){
   
   //lights
   noStroke();
-  if (keyPressed == true){
-     if(key=='a'){
+     if((keyPressed==true) && (key=='a')){
+       fill(r+55,g+55,b1+50);
+       ellipse(134,188,60,60);
        b1 = 0;
-       lr1 = r+50;
-       lg1 = g+50;
-       lb1 = b1+50;
       }
-     if(key=='s'){
-       b2 = 0;
-       lr2 = r+50;
-       lg2 = g+50;
-       lb2 = b1+50;
+      else{
+        r=200;
+        g=200;
+        b1=200;
       }
-     if(key=='d'){
-       b3 = 0;
-       lr3 = r+50;
-       lg3 = g+50;
-       lb3 = b1+50;
+     if((keyPressed==true) && (key=='s')){
+      fill(r+50,g+50,b2+50);
+      ellipse(435,260,60,60);
+      b2 = 0;
+      }
+      else{
+        r=200;
+        g=200;
+        b2=200;
+      }
+     if((keyPressed==true) && (key=='d')){
+      fill(r+50,g+50,b3+50);
+      ellipse(797,208,60,60);
+      b3 = 0;
      }
-     if(key=='w'){
+     else{
+       r=200;
+       g=200;
+       b3=200;
+     }
+     if((keyPressed==true) && (key=='w')){
        mr = 255;
        mg = 255;
        mb = 150;
      }
-  }
   else{
-   r =200;
-   g =200;
-   b1=200;
-   b2=200;
-   b3=200;
    mr=150;
    mg=150;
    mb=150;
-   lr1 = 200;
-   lg1 = 200;
-   lb1 = 200;
-   lr2 = 200;
-   lg2 = 200;
-   lb2 = 200;
-   lr3 = 200;
-   lg3 = 200;
-   lb3 = 200;
   }
   
   //windows
@@ -225,15 +212,6 @@ void draw(){
     }
   }
   
-  //shine
-  fill(lr1,lg1,lb1);
-  ellipse(134,188,60,60);
-  
-  fill(lr2,lg2,lb2);
-  ellipse(435,260,60,60);
-  
-  fill(lr3,lg3,lb3);
-  ellipse(797,208,60,60);
   //moon
   noStroke();
   fill(mr,mg,mb);
@@ -278,6 +256,7 @@ void draw(){
   noStroke();
   fill(150);
   rect(0,350+1,1000,150);
+  
   //the actual friging car
   stroke(0);
   fill(cr,cg,cb);
@@ -288,9 +267,31 @@ void draw(){
     vertex(carX[i],carY[i]);
    }    
   endShape();
+  //extrabits: you've always got to complicate things.
+    fill(200);
+  beginShape();
+  vertex(rightCar-80, topCar);
+  vertex(rightCar-60, topCar);
+  vertex(rightCar-40, topCar+25);
+  vertex(rightCar-60, topCar+25);
+  vertex(rightCar-80, topCar+25);
+  vertex(rightCar-80, topCar);
+  endShape();
   
+  beginShape();
+  vertex(leftCar+80, topCar);
+  vertex(leftCar+60, topCar);
+  vertex(leftCar+40, topCar+25);
+  vertex(leftCar+60, topCar+25);
+  vertex(leftCar+80, topCar+25);
+  vertex(leftCar+80, topCar);
+  endShape();
+
   fill(140);
   ellipse(leftCar+30,curb+80, 40,40);
   ellipse(rightCar-30, curb+80, 40,40);
  
+  fill(200);
+  ellipse(leftCar+30,curb+80, 20,20);
+  ellipse(rightCar-30, curb+80, 20,20);
 }
