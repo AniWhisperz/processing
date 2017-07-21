@@ -11,6 +11,9 @@ int right = 980;
 int mp = 500;
 int w = 15;
 int curb = horizon+50;
+int dis = 600;
+float mcenterx = 780;
+int mcentery = 50;
 
 //house 1 
 int mpy1 = floor-100;
@@ -62,13 +65,14 @@ void draw(){
  line(left, curb,right,curb);
  line(left, curb+10,right,curb+10);
 
-  ////fence
-  // beginShape();
-  // vertex(20,horizon-5); 
-  // vertex(20,215);
-  // vertex(980,215);
-  // vertex(980,horizon-5);
-  // endShape();
+  //fence
+   beginShape();
+   vertex(20,horizon-5); 
+   vertex(20,210);
+   vertex(980,215);
+   vertex(980,horizon-5);
+   vertex(20,horizon-5);
+   endShape();
  
  fill(255);
  //house 1
@@ -294,4 +298,30 @@ void draw(){
   fill(200);
   ellipse(leftCar+30,curb+80, 20,20);
   ellipse(rightCar-30, curb+80, 20,20);
-}
+//stars
+noStroke();
+fill(mr, mg, mb);
+int[] sx ={100+dis,95+dis,75+dis,95+dis,100+dis,105+dis,125+dis,105+dis,100+dis};
+int[] sy ={120,90,85,80,50,80,85,90,120};
+beginShape();
+  for(int i =0; i<sx.length; i++){
+    vertex(sx[i],sy[i]);
+  }
+endShape();
+
+int[]sxs ={150+dis,148+dis,142+dis,148+dis,150+dis,152+dis,158+dis,152+dis,150+dis};
+int[]sys ={125,114,112,110,100,110,112,114,125};
+beginShape();
+  for(int i=0; i<sxs.length; i++){
+   vertex(sxs[i],sys[i]); 
+  }
+endShape();
+ //moonphases... Another moving object... yay.
+fill(150);
+   mcenterx -= 0.2;
+     if (mcenterx <=750){
+       mcenterx=820;
+     }
+  ellipse(mcenterx, mcentery,30,35);
+ stroke(0);
+ }
